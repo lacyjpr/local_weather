@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$.getJSON("http://ip-api.com/json", function(data) {
+	$.getJSON("https://ip-api.com/json", function(data) {
 		console.log(data);
 	});
 });
