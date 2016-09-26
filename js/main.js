@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$.getJSON("https://freegeoip.net/json", function(data) {
+	$.getJSON("https://freegeoip.net/jsonp", function(data) {
 		console.log(data);
 	});
 });
