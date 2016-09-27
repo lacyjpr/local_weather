@@ -1,26 +1,24 @@
-$(document).ready(function(){
+var latitude = null;
+var longitude = null;
 
-	var lat = 0;
-	var lon = 0;
-
-	function getLocation() {
-		$.getJSON("http://freegeoip.net/json?callback=?", function(data) {
-			console.log(data);
-			lat = data.latitude;
-			console.log("lat " + lat);
-			lon = data.longitude;
-			console.log("lon " + lon);
-		});
+$.ajax({
+	url: "https://freegeoip.net/json/",
+	async: false,
+	success: function(data) {
+		console.log(data);   
+		latitude = data.latitude;
+		longitude = data.longitude;	
 	}
-	getLocation();
-
-	$.when(getLocation()).done(function(){
-		// Use cors-anywhere to avoid mixed content message
-		$.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=d5cc4a4def8bbe77201724558d5bd532", function(response) {
-			console.log(response);
-		}); 
-
-	});
 });
+
+var apiKey = "d5cc4a4def8bbe77201724558d5bd532";
+var url = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude +   "&appid=" + apiKey;
+// console.log(url); 
+$.getJSON(url,function(data){
+	console.log(data);
+	console.log(latitude);
+	console.log(longitude);
+   });
+
 
 //openweather key d5cc4a4def8bbe77201724558d5bd532
