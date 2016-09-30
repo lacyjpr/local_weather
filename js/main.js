@@ -16,6 +16,7 @@ function getWeather() {
 				url: url,
 				success: function(data) {
 					console.log(data);
+					$("#icon").html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='current weather icon'>");
 				},
 				error: function() {
 					console.log("Weather not found");
