@@ -2,8 +2,7 @@ function getWeather() {
 	// Use ip to get location
 	$.ajax({
 		url: "https://freegeoip.net/json/",
-		success: function(data) {
-			console.log(data);   
+		success: function(data) {  
 			var latitude = data.latitude;
 			var longitude = data.longitude;	
 
