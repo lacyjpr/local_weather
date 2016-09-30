@@ -15,8 +15,6 @@ function getWeather() {
 			$.ajax({
 				url: url,
 				success: function(data) {
-					console.log(data);
-
 					$("#city").html(data.name + ", " + data.sys.country);
 					var cel = (5/9) * (data.main.temp - 32);
 					$("#tempCel").html(Math.round(cel) + "&deg;C").hide();
