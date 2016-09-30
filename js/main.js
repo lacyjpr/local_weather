@@ -7,6 +7,7 @@ function getWeather() {
 			var latitude = data.latitude;
 			var longitude = data.longitude;	
 
+			// Get weather from Open Weather Map
 			var apiKey = "d5cc4a4def8bbe77201724558d5bd532";
 			// Use cors-anywhere to avoid "mixed content" errors
 			var url = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" + latitude + "&lon=" + longitude +   "&appid=" + apiKey;
