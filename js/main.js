@@ -29,16 +29,14 @@ function getWeather() {
 					});
 				},
 				error: function() {
-					console.log("Weather not found");
+					$("#desc").html("Weather not found");
 				} 
 			});
 		},
 		error: function() {
-			console.log("Location not found");
+			$("#city").html("Location not found");
 		}
 	});
 }
 
 getWeather();
-
-//openweather key d5cc4a4def8bbe77201724558d5bd532
