@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-	//uglify = require('gulp-uglify'),
+	uglify = require('gulp-uglify'),
 	cleanCSS = require('gulp-clean-css'),
 	htmlmin = require('gulp-htmlmin')
 	critical = require('critical'),
@@ -36,11 +36,11 @@ gulp.task('critical', ['copystyles'], function () {
 });
 
 // Uglifies js files and outputs them to dist/js
-// gulp.task('scripts', function(){
-// 	return gulp.src(paths.scripts)
-// 		.pipe(uglify())
-// 		.pipe(gulp.dest('dist/js/'));
-// });
+gulp.task('scripts', function(){
+	return gulp.src(paths.scripts)
+		.pipe(uglify())
+		.pipe(gulp.dest('dist/js/'));
+});
 
 // Minifies css files and outputs them to dist/css
 gulp.task('styles', function(){
@@ -56,11 +56,11 @@ gulp.task('content', function(){
 		.pipe(gulp.dest('dist'));
 });
 
-// Copy the files to dist
-// gulp.task('copy', function(){
-// 	return gulp.src(paths.copy)
-// 		.pipe(gulp.dest('dist/media'));
-// });
+// Copy the .ico file to dist
+gulp.task('copy', function(){
+	return gulp.src(paths.copy)
+		.pipe(gulp.dest('dist/media'));
+});
 
 // Watches for changes and execute appropriate tasks
 gulp.task('watch', function(){
@@ -69,5 +69,5 @@ gulp.task('watch', function(){
 	gulp.watch('src/*.html', ['content']);
 });
 
-gulp.task('default', 'styles', 'content', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'content', 'watch']);
 
